@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ListView的头部 -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <!-- content -->
+
+    <RelativeLayout
+        android:id="@+id/head_contentLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp" >
+
+        <!-- arrow image, progress bar -->
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" >
+
+            <!-- arrow -->
+
+            <ImageView
+                android:id="@+id/head_arrowImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow" />
+
+            <!-- progress bar -->
+
+            <ProgressBar
+                android:id="@+id/head_progressBar"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <!-- pull to refresh indicator, last updated -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <!-- pull to refresh -->
+
+            <TextView
+                android:id="@+id/head_tipsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pull To Refresh"
+                android:textSize="20sp" />
+
+            <!-- last updated -->
+
+            <TextView
+                android:id="@+id/head_lastUpdatedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Updated:"
+                android:textColor="@color/gold"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

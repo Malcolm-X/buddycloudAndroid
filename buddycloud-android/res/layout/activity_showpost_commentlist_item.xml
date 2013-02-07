@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/comment_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/usericon" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/comment_avatar" >
+
+        <TextView
+            android:id="@+id/comment_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textColor="#808080"
+            android:textSize="11sp" />
+
+        
+        <LinearLayout
+            android:id="@+id/comment_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/comment_author"
+            android:textSize="15sp" >
+            <TextView 
+                android:id="@+id/comment_contentText"
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        
+        <TextView
+            android:id="@+id/comment_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/comment_content"
+            android:textColor="#808080"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
