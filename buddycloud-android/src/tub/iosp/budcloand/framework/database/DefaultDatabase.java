@@ -177,7 +177,6 @@ public class DefaultDatabase implements BCDatabase{
 	@Override
 	public List<BCItem> getComments(String channel, String postID) throws BCIOException{
 		this.query_item_channel_comment_id.setParameter(0, channel);
-		
 		this.query_item_channel_comment_id.setParameter(1, postID);
 		return query_item_channel_comment_id.listLazy();
 	}

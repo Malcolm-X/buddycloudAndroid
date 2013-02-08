@@ -1,7 +1,48 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LoginActivity" >
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_weight="0.93" >
+
+        <EditText
+            android:id="@+id/searchWord"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.17"
+            android:ems="10"
+            android:imeOptions="flagNoExtractUi" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.04"
+            android:text="search" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/result_layout"
+        android:layout_width="match_parent"
+        android:layout_height="364dp"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/resultList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

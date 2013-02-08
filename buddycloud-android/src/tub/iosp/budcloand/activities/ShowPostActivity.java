@@ -48,8 +48,6 @@ public class ShowPostActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_showpost);
 		
-		
-		
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
 		String JsonText = bundle.getString("post");

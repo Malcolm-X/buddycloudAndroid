@@ -1,5 +1,6 @@
 package tub.iosp.budcloand.activities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import tub.iosp.budcloand.R;
@@ -19,6 +20,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -87,6 +90,8 @@ public class BasicActivity extends Activity {
 	private ImageView tbChannelInfo;
 	
 	private Button findChannel;
+	
+	List<BCSubscribtion> subList;
 	
 	private int screenWidth;
 	private int screenHeight;
@@ -361,9 +366,57 @@ public class BasicActivity extends Activity {
 		}, 100);
 	}
 	
+	public String processPassInName(String name){
+		String ret = name.substring(0, name.indexOf("@"));
+		return ret;
+	}
+	
+	public void createMenuFromChannelList(){
+
+		List<String> userList = new ArrayList<String>();
+		if(subList == null || subList.isEmpty()){
+			//TODO can be better in future...
+			userList.add("helen5haha");
+			userList.add("user2");
+			userList.add("user3");
+		}else{
+			for(BCSubscribtion sub : subList){
+				if(sub != null)
+					userList.add(processPassInName(sub.getChannelAddress()));
+			}
+					
+		}		
+		
+		int size = userList.size();
+		final String[] talkList = (String[])userList.toArray(new String[size]);
+		
+		//to show a friend-list to be selected to perform instant talk based on XMPP
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Talk List");
+		builder.setItems(talkList,new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				switchToTalk(talkList[which]+"@buddycloud.org");
+//				System.out.println("######## : " + talkList[which]);
+			}
+		});	
+		builder.create().show();
+		
+	}
+	
+	public void switchToTalk(String target){
+		Intent intent = new Intent();
+        Bundle bun = this.getIntent().getExtras();
+        bun.putString("targetUser", target);
+		intent.putExtras(bun);
+		intent.setClass(BasicActivity.this, InstantTalkActivity.class);
+		startActivity(intent);
+	}
+
 	public void onNewComment(){
-		//todo
-		Toast.makeText(getApplicationContext(), "Button 'New Comment' is clicked", Toast.LENGTH_SHORT).show();
+		createMenuFromChannelList();
+
 	}
 	
 	public void onAddPost(){

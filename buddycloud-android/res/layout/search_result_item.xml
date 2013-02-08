@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/result_item_avatar"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:src="@drawable/usericon" />
+
+    <LinearLayout
+        android:id="@+id/text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="6.95"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/result_item_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/result_item_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/result_item_follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="follow"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/result_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:visibility="gone" />
+
+</LinearLayout>

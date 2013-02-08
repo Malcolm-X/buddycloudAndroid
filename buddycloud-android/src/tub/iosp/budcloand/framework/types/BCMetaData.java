@@ -17,7 +17,8 @@ public class BCMetaData implements BCJSONObject{
     private String access_model;
     private String channel_type;
     private java.util.Date cached;
-	
+    private boolean alreadyFollowed; 
+
 	
     public BCMetaData() {
     }
@@ -35,6 +36,8 @@ public class BCMetaData implements BCJSONObject{
         this.access_model = access_model;
         this.channel_type = channel_type;
         this.cached = cached;
+        this.alreadyFollowed = false;
+
     }
 	
 	public BCMetaData(String JsonString, String channel) {
@@ -119,6 +122,15 @@ public class BCMetaData implements BCJSONObject{
 			}
 		}
 	}
+
+	public boolean getAlreadyFollowed(){
+		return alreadyFollowed;
+	}
+	
+	public void setAlreadyFollowed(boolean value){
+		this.alreadyFollowed = value;
+	}
+	
 
 	public Long getId() {
         return id;

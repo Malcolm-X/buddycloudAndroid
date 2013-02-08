@@ -29,7 +29,8 @@
                     android:id="@+id/lefthead"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical"
+                    android:background="@drawable/leftmenu_header_background" >
 
                     <ImageView
                         android:id="@+id/lefthead_channelAvatar"
@@ -47,7 +48,9 @@
                     android:id="@+id/findChannel"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Find Channels"/>"
+                    android:text="Find Channels"
+                    android:textColor="@color/white"
+                    android:background="@drawable/leftmenu_header_findchannel"/>"
             </LinearLayout>
 
             <ListView
@@ -55,7 +58,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fadingEdge="none"
-                android:scrollbars="none" >
+                android:scrollbars="none"
+                 >
             </ListView>
         </LinearLayout>
 

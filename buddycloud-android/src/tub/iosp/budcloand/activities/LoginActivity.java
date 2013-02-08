@@ -88,9 +88,12 @@ public class LoginActivity extends Activity {
 						/* turn to basic activity when the button is clicked */
 						Intent intent = new Intent(getApplicationContext(),
 								BasicActivity.class);
-						/*Bundle bundle = new Bundle();
-						bundle.putString("subInfo", subList.getJSONObject().toString());
-						intent.putExtras(bundle);*/
+						Bundle bundle = new Bundle();
+						//pass-in the loggin username and its passwort
+						bundle.putString("username", username);
+						bundle.putString("password", password);		
+						intent.putExtras(bundle);
+
 						startActivity(intent);
 					}
 					else{

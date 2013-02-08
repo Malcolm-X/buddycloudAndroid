@@ -36,18 +36,10 @@
         </activity>
         <activity android:name="tub.iosp.budcloand.activities.NewPostActivity" >
         </activity>
-        <activity 
-            android:name="tub.iosp.budcloand.activities.SearchActivity" 
-            android:launchMode="singleTop"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" 
-                />
-        </activity>
+         <activity android:name="tub.iosp.budcloand.activities.InstantTalkActivity" /> 
+         <activity android:name="tub.iosp.budcloand.activities.SearchActivity"
+                   android:windowSoftInputMode="adjustUnspecified|stateHidden" /> 
+
 
     </application>
 
