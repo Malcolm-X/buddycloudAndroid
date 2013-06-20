@@ -1,8 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/menu_settings"
+        android:id="@+id/basic_menu_resetDB"
         android:orderInCategory="100"
-        android:title="@string/menu_settings"/>
+        android:title="clear cache"/>
+    
+    <item 
+        android:id="@+id/basic_menu_logout"
+        android:orderInCategory="101"
+        android:title="logout"
+     />
 
 </menu>

@@ -9,23 +9,30 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import tub.iosp.budcloand.framework.model.BCItem;
+import tub.iosp.budcloand.framework.model.BCMetaData;
+import tub.iosp.budcloand.framework.model.BCSubscribtion;
 import android.util.Log;
 import android.util.Pair;
 
-import tub.iosp.budcloand.framework.exceptions.BCJSONException;
-import tub.iosp.budcloand.framework.types.BCItem;
-import tub.iosp.budcloand.framework.types.BCMetaData;
-import tub.iosp.budcloand.framework.types.BCSubscribtion;
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BCJSONParser contains usefull static methods to parse POJOs
+ * into JSON and vise sersa.
+ */
 public class BCJSONParser {
 
 	
+	/** The Constant TAG. For logging */
+	private static final String TAG = "BCJSONParser";
+
 	/**
-	 * @Description: parsing a JSON array String to list of BCitem
-	 * @param JsonText
-	 * @param channelName
-	 * @return
-	 * @throws JSONException
+	 * parsing a JSON array String to list of BCitem.
+	 *
+	 * @param JsonText the json text
+	 * @param channelName the channel's jid
+	 * @return the parsed list
+	 * @throws JSONException if parsing fails
 	 */
 	public static List<BCItem> parseItemList(String JsonText, String channelName)
 			throws JSONException {
@@ -51,15 +58,15 @@ public class BCJSONParser {
 	}
 	
 	/**
-	 * @Description: parsing a JSON Object String to list of BCSubscribtion
-	 * @param JsonText
-	 * @param channelName
-	 * @return
-	 * @throws JSONException
+	 * parsing a JSON Object String to list of BCSubscribtion.
+	 *
+	 * @param JsonText the JSON text
+	 * @param channelName the channel's jid
+	 * @return the parsed list
+	 * @throws JSONException if parsing failed
 	 */
 	public static List<BCSubscribtion> parseSubscribtionList(String JsonText, String channelName) throws JSONException{
 		List<BCSubscribtion> list = new ArrayList<BCSubscribtion>();
-		//Log.e("","Get sub list String:"+JsonText);
 		
 			JSONObject obj = new JSONObject(JsonText);
 			Iterator itr = obj.keys();
@@ -79,10 +86,11 @@ public class BCJSONParser {
 	
 	
 	/**
-	 * @Description: parsing a JSON Object String into list of BCMetaData
-	 * @param JsonText: should contain a key "items" mapping to an JSONArray of MetaData
-	 * @return
-	 * @throws JSONException
+	 * parsing a JSON Object String into list of BCMetaData.
+	 *
+	 * @param JsonText the JSON text
+	 * @return the list
+	 * @throws JSONException if parsing fails
 	 */
 	public static List<BCMetaData> parseMetadataList(String JsonText) throws JSONException {
 		List<BCMetaData> list = new ArrayList<BCMetaData>();
@@ -108,32 +116,85 @@ public class BCJSONParser {
 	}
 	
 	/**
-	 * @Description: parsing a JSON object to list of Pair<channelName,List<BCItem>>
-	 * @param JsonText
-	 * @return
-	 * @throws JSONException 
+	 * parsing a JSON object to list of Pair<channelName,List<BCItem>>.
+	 *
+	 * @param JsonText the JSON text
+	 * @return the list
+	 * @throws JSONException the jSON exception
 	 */
 	public static List<Pair<String, List<BCItem>>> parseSync(String JsonText) throws JSONException  {
 		List<Pair<String, List<BCItem>>> result = new ArrayList<Pair<String, List<BCItem>>>();
+		
+		Log.d(TAG,"parseSync called: "+JsonText);
 		JSONObject object = new JSONObject(JsonText);
-
+		
 		Iterator itr = object.keys();
 		while (itr.hasNext()) {
 			List<BCItem> list = new ArrayList<BCItem>();
 
-			String channelName = (String) itr.next();
-			JSONArray posts = object.getJSONArray(channelName);
-			for (int i = 0; i < posts.length(); ++i) {
-				BCItem item = null;
-				try {
-					item = new BCItem(posts.getJSONObject(i), channelName);
-				} catch (JSONException e) {
-					e.printStackTrace();
+			String index = (String) itr.next();
+			String[] tmp = index.split("/");
+			String channelName = null;
+			for(int i = 0;i < tmp.length; ++i){
+				if(tmp[i].contains("@")){
+					channelName = tmp[i];
+					Log.d(TAG,"channel sync:"+channelName);
+					break;
 				}
-				if(item != null)
-					list.add(item);
 			}
-			result.add(new Pair<String, List<BCItem>>(channelName, list));
+			if (channelName != null) {
+
+				JSONArray posts = object.getJSONArray(index);
+				for (int i = 0; i < posts.length(); ++i) {
+					BCItem item = null;
+					try {
+						item = new BCItem(posts.getJSONObject(i), channelName);
+						Log.d(TAG,"item sync:"+item.getContent()+" @ "+item.getChannel());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					if (item != null)
+						list.add(item);
+				}
+
+				result.add(new Pair<String, List<BCItem>>(channelName, list));
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * Parses the sync count.
+	 *
+	 * @param JsonText the json text
+	 * @return a list of name/value pairs; first = channel jid,  second = list of posts
+	 * @throws JSONException if parsing fails
+	 */
+	public static List<Pair<String, Integer>> parseSyncCount(String JsonText) throws JSONException {
+		List<Pair<String, Integer>> result = new ArrayList<Pair<String, Integer>>();
+		Log.d(TAG,"parseSyncCount called: "+JsonText);
+		
+		JSONObject object = new JSONObject(JsonText);
+		
+		Iterator itr = object.keys();
+		while (itr.hasNext()) {
+			
+			String index = (String) itr.next();
+			String[] tmp = index.split("/");
+			String channelName = null;
+			for(int i = 0;i < tmp.length; ++i){
+				if(tmp[i].contains("@")){
+					channelName = tmp[i];
+					break;
+				}
+			}
+			if (channelName != null) {
+
+				int count = object.getInt(index);
+				result.add(new Pair<String, Integer>(channelName, count));
+				Log.d(TAG,"channel sync:"+channelName+"counter:"+count);
+			}
 		}
 
 		return result;

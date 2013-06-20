@@ -2,36 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     >
+    android:padding="25dip" >
 
-   
-        <ImageView
-            android:id="@+id/newcomment_avatar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/usericon" />
+    <ImageView
+        android:id="@+id/newcomment_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dip"
+        android:src="@drawable/usericon" />
 
-        <EditText
-            android:id="@+id/newcomment_editText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/newcomment_avatar"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:minHeight="65dp" />
+    <EditText
+        android:id="@+id/newcomment_editText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="@string/commentHint"
+        android:layout_alignBaseline="@+id/newcomment_avatar"
+        android:layout_toLeftOf="@+id/newcomment_avatar"
+        android:layout_weight="1"
+        android:background="@drawable/comment_background"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:minHeight="65dp" />
 
     <Button
         android:id="@+id/newcomment_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/newcomment_editText"
         android:layout_alignParentRight="true"
+        android:layout_below="@+id/newcomment_editText"
         android:text="send" />
-    
-
 
 </RelativeLayout>

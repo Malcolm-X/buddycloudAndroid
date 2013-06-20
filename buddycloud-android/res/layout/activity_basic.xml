@@ -1,6 +1,6 @@
 <!-- this is the basic layout of each activity in project -->
 
-<tub.iosp.budcloand.ui.BasicFrameView xmlns:android="http://schemas.android.com/apk/res/android"
+<tub.iosp.budcloand.framework.view.BasicFrameView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
@@ -105,6 +105,16 @@
         			android:src="@drawable/top_info"
         			android:layout_alignParentRight="true"
                  	android:layout_centerVertical="true" />
+    			<!-- 
+    			<Button
+    			    android:id="@+id/tp_logout"
+    			    android:layout_width="wrap_content"
+    			    android:layout_height="wrap_content"
+    			    android:text="logout"
+    			    android:layout_alignParentRight="true"
+    			    android:layout_toRightOf="@+id/tp_channelinfo"
+    			    /> -->
+    			    
                 
             </RelativeLayout>
             
@@ -114,7 +124,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
 
-                <tub.iosp.budcloand.ui.PostListView
+                <tub.iosp.budcloand.framework.view.PostListView
                     android:id="@+id/postList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -130,48 +140,71 @@
         <LinearLayout
             android:id="@+id/rightPanel"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="vertical"
-            android:background="#f0f0ff" >
+            android:background="@drawable/right_panel_background"
+             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#000000"
-                android:text="Channel Address:" >
-            </TextView>
+                android:text="@string/channel_address" 
+                />
+
             <TextView
                 android:id="@+id/right_channel_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="ywison@buddycloud.org" >
-            </TextView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                 />
+            
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#f0f0ff"
-                android:orientation="vertical" >
+                android:textSize="20sp"
+                android:text="@string/channel_type"/>
+            
+            <TextView 
+                android:id="@+id/right_channel_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                />
 
-                <TextView
+            <Button
+                android:id="@+id/right_follow_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:text="follow"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:visibility="visible" />
+           
+
+               <!--  <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="23sp"
+                    android:text="Moderators"
                     android:textColor="#000000"
-                    android:text="Moderators" >
+                    android:textSize="23sp" >
                 </TextView>
 
                 <LinearLayout
                     android:id="@+id/right_moderators"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f0f0ff"
-                    >
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
+                    android:background="#f0f0ff" >
+                </LinearLayout> -->
+          
+
+           <!--  <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#f0f0ff"
@@ -192,12 +225,12 @@
                     android:layout_height="wrap_content"
                     >
                     
-                </ListView>
+                </ListView> -->
             </LinearLayout>
             
             
 
         </LinearLayout>
-    </LinearLayout>
 
-</tub.iosp.budcloand.ui.BasicFrameView>
+
+</tub.iosp.budcloand.framework.view.BasicFrameView>

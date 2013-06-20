@@ -1,21 +1,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:paddingLeft="25dip"
+    android:paddingTop="20dip" >
 
     <ImageView
         android:id="@+id/comment_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="10dip"
         android:src="@drawable/usericon" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/comment_avatar" >
+        android:layout_toLeftOf="@+id/comment_avatar"
+        android:background="@drawable/comment_background" >
 
         <TextView
             android:id="@+id/comment_author"
@@ -48,7 +52,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/comment_content"
-            android:textColor="#808080"
+            android:textColor="@color/gray"
             android:textSize="11sp" />
     </RelativeLayout>
 

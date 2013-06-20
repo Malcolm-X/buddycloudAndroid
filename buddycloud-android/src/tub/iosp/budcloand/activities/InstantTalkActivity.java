@@ -1,8 +1,7 @@
 package tub.iosp.budcloand.activities;
 
-import tub.iosp.budcloand.R;
-
 import org.jivesoftware.smack.Chat;
+import org.jivesoftware.smack.ChatManager;
 import org.jivesoftware.smack.ChatManagerListener;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.MessageListener;
@@ -10,48 +9,85 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Presence;
-import org.jivesoftware.smack.ChatManager;
 
+import tub.iosp.budcloand.R;
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * The Class InstantTalkActivity.
+ *
+ * @Description activity of online instant talk
+ */
 public class InstantTalkActivity extends Activity{
+	
+	/** The handler. */
 	Handler handler;
+	
+	/** The Constant UI_UPDATE. */
 	public static final int UI_UPDATE = 12345;
 	
+	/** The xmpp host. */
 	String xmppHost = "crater.buddycloud.org";
+	
+	/** The xmpp port. */
 	String xmppPort = "5222";
+	
+	/** The xmpp service. */
 	String xmppService = "buddycloud.org";
-//	String username = "ywison"; 
-//	String password = "111112";
+	
+	/** The username. */
 	String username ; 
+	
+	/** The password. */
 	String password ;
+	
+	/** The target user. */
 	String targetUser ;
 	
+	/** The info text. */
 	TextView infoText;
+	
+	/** The send button. */
 	Button sendButton;
+	
+	/** The close button. */
 	Button closeButton;
+	
+	/** The send text. */
 	EditText sendText;
+	
+	/** The text to send. */
 	String textToSend;
 	
+	/** The conn config. */
 	ConnectionConfiguration connConfig;
+	
+	/** The xmpp connection. */
 	XMPPConnection xmppConnection;
+	
+	/** The chat manager. */
 	ChatManager chatManager;
+	
+	/** The chat. */
 	Chat chat;
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.instant_talk);
+
 		sendButton = (Button)findViewById(R.id.sendButton);
 		closeButton = (Button)findViewById(R.id.closeButton);
 		infoText = (TextView)findViewById(R.id.infoText);
@@ -118,6 +154,7 @@ public class InstantTalkActivity extends Activity{
 			e.printStackTrace();
 		}
 			
+		//login
       try {
     	  xmppConnection.login(username, password);
     	  System.out.println("#### : logged as " + xmppConnection.getUser());
@@ -166,6 +203,9 @@ public class InstantTalkActivity extends Activity{
 
 	}
 
+	/**
+	 * On close button.
+	 */
 	public void onCloseButton(){
 		System.out.println("close button is clicked");
 		//disconnect the chat
@@ -179,11 +219,16 @@ public class InstantTalkActivity extends Activity{
 			infoText.append(str);
 		}
 		//close the activity,switch back to the BuddycloaAnd Application
-//		System.exit(0);
 		finish();
 		
 	}
 	
+	/**
+	 * Process pass in name.
+	 *
+	 * @param name the name
+	 * @return the string
+	 */
 	public String processPassInName(String name){
 		String ret = name.substring(0, name.indexOf("@"));
 		return ret;

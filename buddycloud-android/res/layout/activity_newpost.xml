@@ -19,12 +19,14 @@
 
         <EditText
             android:id="@+id/newpost_editText"
+            android:background="@drawable/post_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:minHeight="125dp" />
+            android:minHeight="125dp"
+            android:hint="say something..." />
     </LinearLayout>
 
     <Button

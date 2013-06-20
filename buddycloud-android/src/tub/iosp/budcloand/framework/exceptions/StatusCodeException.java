@@ -1,18 +1,20 @@
 package tub.iosp.budcloand.framework.exceptions;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This Exception is thrown when the Server didnt respond with the correct status code (get:200, post:201)
+ * This Exception is thrown when the Server didnt respond with the correct status code (get:200, post:201).
+ *
  * @author Malcolm-X
  */
 public class StatusCodeException extends BCIOException {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -6602884386503560599L;
 
 	/**
+	 * Instantiates a new status code exception.
+	 *
 	 * @param statuscode The response statuscode.
 	 * @param message The response status message.
 	 */
@@ -21,6 +23,8 @@ public class StatusCodeException extends BCIOException {
 	}
 	
 	/**
+	 * Instantiates a new status code exception.
+	 *
 	 * @param statuscode The response statuscode.
 	 * @param message The response status message.
 	 * @param expected The expected statuscode.
@@ -30,6 +34,8 @@ public class StatusCodeException extends BCIOException {
 	}
 	
 	/**
+	 * Instantiates a new status code exception.
+	 *
 	 * @param statuscode The response statuscode.
 	 * @param message The response status message.
 	 * @param expected The expected statuscode.

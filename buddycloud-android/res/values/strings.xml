@@ -14,13 +14,16 @@
 
     <string name="app_follow_name">Follow a person/channel</string>
     <string name="app_post_name">Post a message</string>
-    <string name="main_title">Buddycloud</string>
+    <string name="main_title"><b>buddy</b>cloud</string>
 	<string name="app_login_name">Login with your account</string>
 	<string name="anonymous_text">Try Buddycloud</string>
 	<string name="normal_login_text">Get started</string>
 	
 	<string name="places_current">current location</string>
 	<string name="places_add_bookmark">Bookmark</string>
+	
+	<string name="channel_address"><b>Channel address:</b></string>
+	<string name="channel_type"><b>Channel type:</b></string>
 	
 	<string name="posting_post_to">Post to %s</string>
 	<string name="posting_reply">Reply</string>
@@ -32,5 +35,7 @@
     <string name="pull_to_refresh_tap_label">Tap to refresh...</string>
     <string name="searchLabel">lable</string>
     <string name="searchHint">hint</string>
+    <string name="commentHint">make a comment...</string>
+    <string name="postHint">say something...</string>
 
 </resources>

@@ -41,7 +41,10 @@
         android:text="follow"
         android:textColor="#000000"
         android:textStyle="bold"
-        android:visibility="visible" />
+        android:visibility="visible" 
+        android:focusable="false"
+        android:clickable="false" 
+        android:focusableInTouchMode="false"/>
 
     <TextView
         android:id="@+id/result_item_name"

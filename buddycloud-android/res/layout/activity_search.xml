@@ -1,15 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity" >
+    android:paddingTop="15dp" >
 
     <LinearLayout
         android:id="@+id/search_layout"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_weight="0.93" >
+        android:layout_weight="0.00" >
 
         <EditText
             android:id="@+id/searchWord"
@@ -34,15 +34,17 @@
     <LinearLayout
         android:id="@+id/result_layout"
         android:layout_width="match_parent"
-        android:layout_height="364dp"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/search_layout" >
 
         <ListView
             android:id="@+id/resultList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+             >
         </ListView>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

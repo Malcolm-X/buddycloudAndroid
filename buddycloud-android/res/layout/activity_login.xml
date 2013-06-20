@@ -1,39 +1,84 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LoginActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MyTheme"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:paddingLeft="15dip"
+    android:paddingRight="15dip" >
 
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/top_showchannel" />
+    <LinearLayout
+        android:id="@+id/login_interface"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/top_info" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/buddycloud_2"
+            android:text="@string/main_title"
+            android:textColor="@color/textcolor"
+            android:textSize="26sp" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imageButton4"
-        android:src="@drawable/top_newpost" />
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:stretchColumns="*" >
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imageButton3"
-        android:src="@drawable/top_newcomment" />
+            <TextView
+                android:id="@+id/e_mail_text"
+                android:layout_width="fill_parent"
+                android:text="Enter your Buddycloud address:"
+                android:textColor="@color/textcolor" />
 
-</RelativeLayout>
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/e_mail_textbox"
+                    android:contentDescription="Enter your Buddycloud or Google E-Mail adress:"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </TableRow>
+
+            <TextView
+                android:id="@+id/password_text"
+                android:text="Enter password: "
+                android:textColor="@color/textcolor" />
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/password_textbox"
+                    android:contentDescription="Enter password:"
+                    android:maxLines="1"
+                    android:password="true"
+                    android:singleLine="true" />
+            </TableRow>
+
+            <Button
+                android:id="@+id/login_button"
+                android:onClick="handleLogin"
+                android:text="@string/normal_login_text" />
+        </TableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_progress"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/half_transparent"
+        android:visibility="gone" >
+
+        <ProgressBar
+            android:id="@+id/login_progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+</FrameLayout>
